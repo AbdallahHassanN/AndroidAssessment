@@ -26,11 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.technical_assignment.common.Constants.DEFAULT_IMG
 import com.example.technical_assignment.common.loadPicture
-
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -130,6 +131,17 @@ fun StoreItemView(
         backLayerBackgroundColor = Color.White
     )
 }
-
-
-
+@Preview(showBackground = true)
+@Composable
+fun ShowGridItemView() {
+    val navController = rememberNavController()
+    StoreItemView(
+        title = "KING WEAR",
+        desc = "KING WEAR KING WEAR KING WEAR KING WEAR",
+        price = "20.",
+        rating = "44",
+        img = DEFAULT_IMG.toString(),
+        count = "33",
+        navController = navController
+    )
+}

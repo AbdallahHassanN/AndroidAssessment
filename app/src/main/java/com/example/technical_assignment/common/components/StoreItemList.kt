@@ -6,8 +6,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,35 +32,39 @@ fun StoreItemList(
             .padding(it)
     ) {
         CircularProgressBar(isDisplayed = loading)
-        LazyColumn {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+        ) {
             itemsIndexed(
-                items = storeItems!!
-            ) { _, storeItem ->
-                StoreItemCard(storeItem = storeItem, onClick = {
-                    val encodedImg =
-                        URLEncoder
-                            .encode(storeItem.image, "UTF-8")
-                            .toString().trimEnd()
-                    val encodedDesc =
-                        URLEncoder
-                            .encode(storeItem.description,"UTF-8")
-                            .toString().replace("+"," ")
-                    val encodedTitle =
-                        URLEncoder
-                            .encode(storeItem.title,"UTF-8")
-                            .toString().replace("+"," ")
-
-                    navController.navigate(
-                        Screens.DetailScreen.withArgs(
-                            encodedTitle,
-                            encodedDesc,
-                            storeItem.price.toString(),
-                            storeItem.rating.rate.toString(),
-                            encodedImg,
-                            storeItem.rating.count.toString()
+                items = storeItems ?: emptyList()
+            ) { _, item ->
+                GridItemCard(
+                    item = item,
+                    onClick = {
+                        val encodedImg =
+                            URLEncoder
+                                .encode(item.image, "UTF-8")
+                                .toString().trimEnd()
+                        val encodedDesc =
+                            URLEncoder
+                                .encode(item.description, "UTF-8")
+                                .toString().replace("+", " ")
+                        val encodedTitle =
+                            URLEncoder
+                                .encode(item.title, "UTF-8")
+                                .toString().replace("+", " ")
+                        navController.navigate(
+                            Screens.DetailScreen.withArgs(
+                                encodedTitle,
+                                encodedDesc,
+                                item.price.toString(),
+                                item.rating.rate.toString(),
+                                encodedImg,
+                                item.rating.count.toString()
+                            )
                         )
-                    )
-                })
+                    }
+                )
             }
         }
     }
