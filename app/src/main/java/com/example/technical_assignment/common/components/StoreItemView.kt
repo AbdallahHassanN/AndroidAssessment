@@ -5,10 +5,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -32,25 +32,26 @@ fun StoreItemView(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .wrapContentHeight()
     ) {
         img.let { imgUrl ->
             val image = loadPicture(url = imgUrl, defaultImage = DEFAULT_IMG)
                 .value
             image?.let { img ->
                 Image(
-                    bitmap = img.asImageBitmap(), contentDescription = "Game Image",
+                    bitmap = img.asImageBitmap(), contentDescription = "Item Image",
                     modifier = Modifier
                         .fillMaxWidth()
                         .requiredHeight(260.dp)
-                        .padding(3.dp),
-                    contentScale = ContentScale.Crop
+                        .padding(top = 10.dp),
+                    contentScale = ContentScale.Fit
                 )
             }
         }
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .wrapContentHeight()
                 .padding(10.dp),
         ) {
             Text(

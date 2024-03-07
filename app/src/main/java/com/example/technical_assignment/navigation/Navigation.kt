@@ -69,7 +69,8 @@ fun Navigation() {
                     price = itemPrice.toString(),
                     rating = itemRating.toString(),
                     img = itemIMG.toString(),
-                    count = itemCOUNT.toString()
+                    count = itemCOUNT.toString(),
+                    navController
                 )
             } else {
                 Text("Item details not found")
