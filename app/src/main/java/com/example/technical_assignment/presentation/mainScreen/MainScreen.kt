@@ -7,8 +7,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.technical_assignment.common.Constants.TAG
-import com.example.technical_assignment.common.components.StoreItemList
+import com.example.technical_assignment.presentation.common.Constants.TAG
+import com.example.technical_assignment.presentation.common.components.StoreItemList
+import com.example.technical_assignment.presentation.viewmodels.MainScreenViewModel
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable

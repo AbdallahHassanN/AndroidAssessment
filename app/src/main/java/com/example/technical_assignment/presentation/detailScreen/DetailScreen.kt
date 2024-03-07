@@ -4,7 +4,7 @@ package com.example.technical_assignment.presentation.detailScreen
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import com.example.technical_assignment.common.components.StoreItemView
+import com.example.technical_assignment.presentation.common.components.StoreItemView
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
