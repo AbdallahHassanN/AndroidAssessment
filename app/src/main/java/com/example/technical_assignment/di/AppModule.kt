@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.technical_assignment.BaseApplication
 import com.example.technical_assignment.db.StoreItemDao
-import com.task.movieapp.movielist.data.local.StoreItemDatabase
+import com.example.technical_assignment.db.StoreItemDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

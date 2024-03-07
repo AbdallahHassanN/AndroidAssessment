@@ -36,14 +36,26 @@ fun StoreItemList(
                 items = storeItems!!
             ) { _, storeItem ->
                 StoreItemCard(storeItem = storeItem, onClick = {
-                    val encoded = URLEncoder.encode(storeItem.image, "UTF-8").toString()
+                    val encodedImg =
+                        URLEncoder
+                            .encode(storeItem.image, "UTF-8")
+                            .toString().trimEnd()
+                    val encodedDesc =
+                        URLEncoder
+                            .encode(storeItem.description,"UTF-8")
+                            .toString().replace("+"," ")
+                    val encodedTitle =
+                        URLEncoder
+                            .encode(storeItem.title,"UTF-8")
+                            .toString().replace("+"," ")
+
                     navController.navigate(
                         Screens.DetailScreen.withArgs(
-                            storeItem.title,
-                            storeItem.description,
+                            encodedTitle,
+                            encodedDesc,
                             storeItem.price.toString(),
                             storeItem.rating.rate.toString(),
-                            encoded,
+                            encodedImg,
                             storeItem.rating.count.toString()
                         )
                     )

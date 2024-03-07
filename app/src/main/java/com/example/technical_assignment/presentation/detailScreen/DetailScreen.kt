@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.technical_assignment.common.Constants.TAG
 import com.example.technical_assignment.common.components.StoreItemView
-import java.net.URLDecoder
 
 
 @Composable
@@ -25,10 +24,7 @@ fun DetailScreen(
     Log.d(TAG, title)
     Log.d(TAG, desc)
     Log.d(TAG, price)
-    val imageUrl = URLDecoder.decode(img, "UTF-8")
-    Log.d(TAG, imageUrl)
     Log.d(TAG, rating)
-
 
     Column(
         modifier = Modifier
@@ -36,7 +32,7 @@ fun DetailScreen(
             .verticalScroll(rememberScrollState())
     ) {
         StoreItemView(
-            title, desc, price, rating, img,count
+            title, desc, price, rating, img, count
         )
     }
 

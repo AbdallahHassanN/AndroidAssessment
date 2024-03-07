@@ -20,10 +20,11 @@ fun MainScreen(
     val loading = viewModel.loading.value
 
 
-    Log.d(TAG,"items: $itemsList")
-    Scaffold(
-    ) { padding ->
-        StoreItemList(loading = loading, storeItems = itemsList,
-            it = padding, navController = navController)
+    Log.d(TAG, "items: $itemsList")
+    Scaffold { padding ->
+        StoreItemList(
+            loading = loading, storeItems = itemsList,
+            it = padding, navController = navController
+        )
     }
 }

@@ -24,22 +24,22 @@ import com.example.technical_assignment.common.loadPicture
 @Composable
 fun StoreItemView(
     title: String,
-    desc:String,
-    price:String,
-    rating:String,
-    img:String,
-    count:String
+    desc: String,
+    price: String,
+    rating: String,
+    img: String,
+    count: String
 ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        img.let {
-            val image = loadPicture(url = it, defaultImage = DEFAULT_IMG)
+        img.let { imgUrl ->
+            val image = loadPicture(url = imgUrl, defaultImage = DEFAULT_IMG)
                 .value
-            image?.let {
+            image?.let { img ->
                 Image(
-                    bitmap = it.asImageBitmap(), contentDescription = "Game Image",
+                    bitmap = img.asImageBitmap(), contentDescription = "Game Image",
                     modifier = Modifier
                         .fillMaxWidth()
                         .requiredHeight(260.dp)
@@ -53,56 +53,48 @@ fun StoreItemView(
                 .fillMaxWidth()
                 .padding(10.dp),
         ) {
-            title.let { title ->
-                Text(
-                    text = title,
-                    modifier = Modifier
-                        .fillMaxWidth(0.7f)
-                        .padding(5.dp),
-                    style = MaterialTheme.typography.titleMedium,
-                    softWrap = true
-                )
-            }
-            rating.let { rating ->
-                Text(
-                    text = "Rated: $rating by $count users",
-                    modifier = Modifier
-                        .fillMaxWidth(0.7f)
-                        .padding(5.dp),
-                    style = MaterialTheme.typography.titleMedium,
-                    softWrap = true
-                )
-            }
+            Text(
+                text = title,
+                modifier = Modifier
+                    .fillMaxWidth(0.7f)
+                    .padding(5.dp),
+                style = MaterialTheme.typography.titleMedium,
+                softWrap = true
+            )
+            Text(
+                text = "Rated: $rating by $count users",
+                modifier = Modifier
+                    .fillMaxWidth(0.7f)
+                    .padding(5.dp),
+                style = MaterialTheme.typography.titleMedium,
+                softWrap = true
+            )
         }
         CustomDivider()
 
         Row {
-            desc.let { desc ->
-                Text(
-                    text = desc,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp),
-                    style = MaterialTheme.typography.labelLarge,
-                    softWrap = true
-                )
-            }
+            Text(
+                text = desc,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                style = MaterialTheme.typography.labelLarge,
+                softWrap = true
+            )
         }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .horizontalScroll(rememberScrollState()),
         ) {
-            price.let { price ->
-                Text(
-                    text = "Buy Now: $price$",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp),
-                    style = MaterialTheme.typography.labelLarge,
-                    softWrap = true
-                )
-            }
+            Text(
+                text = "Buy Now: $price$",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                style = MaterialTheme.typography.labelLarge,
+                softWrap = true
+            )
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.task.movieapp.movielist.data.local
+package com.example.technical_assignment.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

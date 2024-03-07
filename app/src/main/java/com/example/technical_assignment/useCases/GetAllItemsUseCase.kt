@@ -6,6 +6,7 @@ import com.example.technical_assignment.common.Constants.TAG
 import com.example.technical_assignment.network.response.Resource
 import com.example.technical_assignment.repository.Repository
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
@@ -15,6 +16,7 @@ class GetAllItemsUseCase
     private val repo: Repository,
     @ApplicationContext private val context: Context
 ) {
+    @OptIn(ExperimentalCoroutinesApi::class)
     suspend fun execute(
     )  = repo.getAllItems()
         .flatMapConcat { response ->
