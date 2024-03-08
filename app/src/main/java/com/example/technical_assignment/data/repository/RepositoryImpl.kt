@@ -33,7 +33,8 @@ class RepositoryImpl(
                 if (itemsLocal.isNotEmpty()) {
                     emit(Resource.Success(itemsLocal))
                 } else {
-                    emit(Resource.Error("No internet connection and no data in RoomDB"))
+                    emit(Resource.Error("No internet connection and no data in RoomDB." +
+                            "Please connect to the internet"))
                 }
             }
         } catch (e: Exception) {

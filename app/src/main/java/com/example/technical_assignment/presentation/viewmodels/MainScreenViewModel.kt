@@ -2,6 +2,8 @@ package com.example.technical_assignment.presentation.viewmodels
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.technical_assignment.presentation.common.Constants.TAG
@@ -22,6 +24,8 @@ class MainScreenViewModel
 ) : ViewModel() {
     private val _itemsList = MutableStateFlow<List<StoreItem>>(listOf())
     val itemsList = _itemsList.asStateFlow()
+    private val _dataState = MutableLiveData<Resource<List<StoreItem>>>()
+    val dataState: LiveData<Resource<List<StoreItem>>> = _dataState
     val loading = mutableStateOf(false)
 
     init {
@@ -37,6 +41,8 @@ class MainScreenViewModel
             when (response) {
                 is Resource.Error -> {
                     Log.d(TAG, "Error response")
+                    _dataState.value =
+                        response
                     loading.value = false
                 }
 
